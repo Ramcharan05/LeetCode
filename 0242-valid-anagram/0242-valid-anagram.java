@@ -3,23 +3,16 @@ class Solution {
         int n1=s.length();
         int n2=t.length();
         if(n1!=n2)return false;
-        Map<Character, Integer> mp1=new HashMap<>();
-        for(char c:s.toCharArray()){
-            mp1.put(c,mp1.getOrDefault(c,0)+1);
+        int a[]=new int[26];
+        int b[]=new int[26];
+        for(int i=0;i<n1;i++){
+            a[s.charAt(i)-'a']++;
         }
-        Map<Character, Integer> mp2=new HashMap<>();
-        for(char c:t.toCharArray()){
-            mp2.put(c,mp2.getOrDefault(c,0)+1);
+        for(int i=0;i<n2;i++){
+            b[t.charAt(i)-'a']++;
         }
-        for(char k:mp1.keySet()){
-            int x=mp1.get(k);
-            if(!mp2.containsKey(k)){
-                return false;
-            }
-            else if(mp2.containsKey(k)){
-                int y=mp2.get(k);
-                if(x!=y)return false;
-            }
+        for(int i=0;i<26;i++){
+            if(a[i]!=b[i])return false;
         }
         return true;
     }
