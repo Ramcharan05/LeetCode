@@ -1,11 +1,11 @@
 class Solution {
     public int minimumLength(String s) {
         int c=0;
-        Map<Character, Integer> mp=new HashMap<>();
+        int a[]=new int[26];
         for(char ch:s.toCharArray()){
-            mp.put(ch,mp.getOrDefault(ch,0)+1);
+            a[ch-'a']++;
         }
-        for(int x:mp.values()){
+        for(int x:a){
             if(x<3){
                 c+=x;
             }
